@@ -1,100 +1,106 @@
-1) Посмотреть где я\
+1) Посмотреть где я  
 `pwd`
 
-2) Создать папку\
+2) Создать папку  
 `mkdir HW`
 
-3) Зайти в папку\
+3) Зайти в папку  
 `cd HW`
 
-4) Создать 3 папки\
+4) Создать 3 папки  
 `mkdir HW1 HW2 HW3`
 
-5) Зайти в любоую папку\
+5) Зайти в любоую папку  
 `cd HW1`
 
-6) Создать 5 файлов (3 txt, 2 json)\
-`touch file_0.txt file_1.txt file_2.txt file_3.json file_4.json` or\
+6) Создать 5 файлов (3 txt, 2 json)  
+`touch file_0.txt file_1.txt file_2.txt file_3.json file_4.json`  
+or  
 `touch file_{0..2}.txt file_{3..4}.json`
 
-7) Создать 3 папки\
-`mkdir folder_0 folder_1 folder_2` or\
+7) Создать 3 папки   
+`mkdir folder_0 folder_1 folder_2`  
+or   
 `mkdir folder_{0..2}`.
 
-8) Вывести список содержимого папки\
+8) Вывести список содержимого папки   
 `ls -la`
 
-9) Открыть любой txt файл\
+9) Открыть любой txt файл   
 `vim file_0.txt`
 
-10) написать туда что-нибудь, любой текст.\
+10) написать туда что-нибудь, любой текст.   
 `i write text`
 
-11) сохранить и выйти.\
+11) сохранить и выйти.   
 Esc `:wq` Enter
 
-12) Выйти из папки на уровень выше\
+12) Выйти из папки на уровень выше   
 `cd ..`
 
-1) переместить любые 2 файла, которые вы создали, в любую другую папку.\
-`pwd`\
-`~/YandexDisk/QA/Linux/HW/`\
-`cd -`\
-`pwd`\
-`~/YandexDisk/QA/Linux/HW/HW1`\
-`mv file_0.txt file_1.txt ..`
+13) переместить любые 2 файла, которые вы создали, в любую другую папку.  
+    * the first option:  
+    `pwd`  
+    `~/YandexDisk/QA/Linux/HW/`  
+    `cd -`  
+    `pwd`  
+    `~/YandexDisk/QA/Linux/HW/HW1`  
+    `mv file_0.txt file_1.txt ..`  
     
-    or\
-  `pwd`\
-`~/YandexDisk/QA/Linux/HW/`\
-`cd -`\
-`pwd`\
-`~/YandexDisk/QA/Linux/HW/HW1`\
-  `cd -`\
-`mv file_{0..1}.txt ../HW2`
+    * the second option:  
+    `pwd`  
+    `~/YandexDisk/QA/Linux/HW/`  
+    `cd -`  
+    `pwd`  
+    `~/YandexDisk/QA/Linux/HW/HW1`  
+      `cd -`  
+    `mv file_{0..1}.txt ../HW2`  
     
-    or\
-  `pwd`\
-`~/YandexDisk/QA/Linux/HW/`\
-  `mv HW1/file_{0..1}.txt HW2`
+    * the third option:  
+    `pwd`  
+    `~/YandexDisk/QA/Linux/HW/`  
+      `mv HW1/file_{0..1}.txt HW2`  
 
-1) скопировать любые 2 файла, которые вы создали, в любую другую папку.\
-`pwd`\
-`~/YandexDisk/QA/Linux/HW/HW1`\
-`cp file_2.txt file_3.json ../HW2`\
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.  
+    * the first option:    
+      `pwd`  
+      `~/YandexDisk/QA/Linux/HW/HW1`  
+      `cp file_2.txt file_3.json ../HW2`  
 
-    or\
-`pwd`\
-`~/YandexDisk/QA/Linux/HW/HW1`\
-`cp file_{2..3}.* ../HW2`
+    * the second option:  
+      `pwd`  
+      `~/YandexDisk/QA/Linux/HW/HW1`  
+      `cp file_{2..3}.* ../HW2`  
 
-    or\
-  `pwd`\
-`~/YandexDisk/QA/Linux/HW/`\
-  `cp HW1/file_{0..1}.txt HW2`
+    * the third option:  
+      `pwd`  
+      `~/YandexDisk/QA/Linux/HW/`  
+      `cp HW1/file_{0..1}.txt HW2`  
 
-15) Найти файл по имени\
-`find -name "*.json"`
+15) Найти файл по имени  
+`find -name "*.json"`  
 
-16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.\
-`tail -f file_0.txt | grep something`
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.  
+`tail -f file_0.txt | grep something`  
+Ctrl `c`  
 
-17) вывести несколько первых строк из текстового файла\
-`head file_0.txt`
+17) вывести несколько первых строк из текстового файла  
+`head file_0.txt`  
 
-18) вывести несколько последних строк из текстового файла\
+18) вывести несколько последних строк из текстового файла   
 `tail file_0.txt`
 
-19) просмотреть содержимое длинного файла (команда less) изучите как она работает.\
-`less file_0.txt`
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.  
+`less file_0.txt`  
+`q`
 
-20) вывести дату и время\
+20) вывести дату и время  
 `date`
 
 # Задание *
 ---
 1) Отправить http запрос на сервер.
-http://162.55.220.72:5005/terminal-hw-request\
+http://162.55.220.72:5005/terminal-hw-request   
 `curl http://162.55.220.72:5005/terminal-hw-request`
 
 Response is:
@@ -103,7 +109,7 @@ Response is:
                                  Dload  Upload   Total   Spent    Left  Speed
 100   237  100   237    0     0   1527      0 --:--:-- --:--:-- --:--:--  1538{"Intro":"Hello!! This is your the first response from server","Tasks":{"Task_1":"Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)","result":["Your_String","Your_number"]}}
 ```
-Second request:\
+Second request:   
 `curl "http://162.55.220.72:5005/get_method?name=Anna_Nurgaleeva&age=32"`
 
 Response is:
