@@ -65,19 +65,19 @@
     `the SeCoNd 2` Enter  
     Ctrl + `d`  
 
-14. Сделать текстовый файл tf_4.txt в котором будет 15 строк.
-    `vim tf_4.txt`  
+14. Сделать текстовый файл tf_4.txt в котором будет 15 строк.  
+    `vim tf_4.txt`    
     `:set number` Enter  
     `i` `string to copy`  
-    Esc
+    Esc  
     `yy14p` Enter  
     `:wq` Enter    
 
 15. Сделать текстовый файл tF_5.txt в котором будет 13 строк.  
-    `vim tF_5.txt`
+    `vim tF_5.txt`  
     `:set number` Enter  
     `i` `string to copy one more time`  
-    Esc
+    Esc  
     `yy12p` Enter  
     `:wq` Enter  
 
@@ -88,7 +88,15 @@
     `cd..`  
 
 18. Вывести содержимое файла tf_3.txt в терминал.  
-    `cat dir_1/inner_dir_1/tf_3.txt`  
+    `cat inner_dir_1/tf_3.txt`  
+    ```
+    1. any string
+    2. another string
+    3. completely different string
+    the second 2
+    the sec 2
+    the SeCoNd 2 
+    ```
 
 19. Найти путь к файлу tf_4.txt  
     `find -name tf_4.txt -exec readlink -f '{}' ';'`  
@@ -171,19 +179,53 @@
     ./tf_2.txt
     ```
 31. Найти все строки во всех файлах где нет комбинации “second”  
-    `grep -v "second" ./*`
+    `grep -rv "second"`
     ```
-    grep: ./inner_dir_1: Is a directory
-    ./tf_2.txt:the first 1
-    ./tf_2.txt:the third 3
-    ./tf_2.txt:the sec 3
-    ./tf_2.txt:the SeCoNd 2
+    inner_dir_1/tf_3.txt:1. any string
+    inner_dir_1/tf_3.txt:2. another string
+    inner_dir_1/tf_3.txt:3. completely different string
+    inner_dir_1/tf_3.txt:the sec 2
+    inner_dir_1/tf_3.txt:the SeCoNd 2
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tf_4.txt:string to copy
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    inner_dir_1/tF_5.txt:string to copy one more time
+    tf_2.txt:the first 1
+    tf_2.txt:the third 3
+    tf_2.txt:the sec 3
+    tf_2.txt:the SeCoNd 2
     ```
 32. Найти только название и путь к файлам где нет комбинации “second”  
-    `grep -vl "second" ./*`
+    `grep -rvl "second"`
     ```
-    grep: ./inner_dir_1: Is a directory
-    ./tf_2.txt
+    inner_dir_1/tf_3.txt
+    inner_dir_1/tf_4.txt
+    inner_dir_1/tF_5.txt
+    tf_2.txt
     ```
 33. Вывести в терминал 4 последних строк любого текстового файла  
     `tail -n4 tf_2.txt`  
