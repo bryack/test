@@ -28,10 +28,10 @@
         Ctrl + `d`  
 
 7. Зайти в папку inner_dir_1  
-    `cd inner_dir_1/`  
+    `cd inner_dir_1`  
 
 8. Через cat сделать текстовый файл tf_3.txt  c любыми строками  
-    `cat > tf_3.txt`  
+    `cat >> tf_3.txt`  
     ```
     1. any string
     2. another string
@@ -83,12 +83,21 @@
 
 16. Вывести список всех файлов в папке.  
     `ls -la | grep ^-`   
+    or  
+    `ls -la | grep -v /`  
+    Result:  
+    ```
+    -rw-r--r-- 1 user 197610  0 Apr 18 15:31 tf_1.txt
+    -rw-r--r-- 1 user 197610 60 Apr 18 15:35 tf_2.txt
+    -rw-r--r-- 1 user 197610 13 Apr 18 16:03 tf_6.txt
+    ```
 
 17. Выйти из папки inner_dir_1  
     `cd..`  
 
 18. Вывести содержимое файла tf_3.txt в терминал.  
     `cat inner_dir_1/tf_3.txt`  
+    Result:  
     ```
     1. any string
     2. another string
@@ -99,14 +108,20 @@
     ```
 
 19. Найти путь к файлу tf_4.txt  
-    `find -name tf_4.txt -exec readlink -f '{}' ';'`  
+    `find -name tf_4.txt -exec readlink -f '{}' ';'`
+    or  
+    `realpath $(find -name tf_4.txt)`  
+    Result:    
     `/d/Documents/YandexDisk/QA/Linux/HW_2/dir_1/inner_dir_1/tf_4.txt`  
 
 20. Отчистить файл tf_4.txt от содержимого без удаления самого файла.  
-    `:> dir_1/inner_dir_1/tf_4.txt`  
+    `:> inner_dir_1/tf_4.txt`  
 
 21. Найти путь к файлам у которых есть  “tf” в названии.  
     `find -name '*tf*' -exec readlink -f '{}' ';'`  
+    or  
+    `realpath $(find . -name '*tf*')`  
+    Result:  
     ```
     /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1/inner_dir_1/tf_3.txt
     /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1/inner_dir_1/tf_4.txt
@@ -114,7 +129,10 @@
     /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1/tf_2.txt
     ```  
 22. Найти путь к файлам у которых есть  “tf” в названии и буквы в любом регистре.   
-    `find -iname '*tf*' -exec readlink -f '{}' ';'`
+    `find -iname '*tf*' -exec readlink -f '{}' ';'`  
+    or  
+    `realpath $(find . -iname '*tf*')`  
+    Result:  
     ```
     /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1/inner_dir_1/tf_3.txt
     /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1/inner_dir_1/tf_4.txt
@@ -123,7 +141,8 @@
     /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1/tf_2.txt
     ```
 23. Найти строки в файлах где есть комбинация букв “sec” в текущей папке   
-    `grep "sec" ./*`    
+    `grep "sec" ./*`  
+    Result:    
     ```
     grep: ./inner_dir_1: Is a directory
     ./tf_2.txt:the second 2
@@ -131,6 +150,7 @@
     ```
  24. Найти строки в файлах где есть комбинация букв “sec” в любом регистре в текущей папке  
     `grep -i "sec" ./*`  
+    Result:  
         ```
         grep: ./inner_dir_1: Is a directory
         ./tf_2.txt:the second 2
@@ -139,6 +159,7 @@
         ```
 25. Найти строки в файлах где есть только комбинация букв “sec” в текущей папке  
     `grep -w "sec" ./*`  
+    Result:  
     ```
     grep: ./inner_dir_1: Is a directory
     ./tf_2.txt:the sec 3
@@ -146,6 +167,7 @@
 
 26. Найти строки в файлах где есть только комбинация букв “sec” в любом регистре в текущей папке    
     `grep -wi "sec" ./*`  
+    Result:  
     ```
     grep: ./inner_dir_1: Is a directory
     ./tf_2.txt:the sec 3
@@ -153,33 +175,37 @@
 
 27. Найти строки в файлах где есть комбинация букв “second” в текущей папке  
     `grep "second" ./*`  
+    Result:  
     ```
     grep: ./inner_dir_1: Is a directory
     ./tf_2.txt:the second 2
     ```  
 
 28. Найти строки в файлах где есть комбинация букв “second” в любом регистре в текущей папке  
-    `grep -i "second" ./*`
+    `grep -i "second" ./*`  
+    Result:  
     ```
     grep: ./inner_dir_1: Is a directory
     ./tf_2.txt:the second 2
     ./tf_2.txt:the SeCoNd 2
     ```  
 29. Найти строки в файлах где есть комбинация букв “second” во всех папках ниже уровнем  
-    `grep -r "second"`
+    `grep -r "second" ./*/`  
+    Result:
     ```
-    inner_dir_1/tf_3.txt:the second 2
-    tf_2.txt:the second 2
+    ./inner_dir_1/tf_3.txt:the second 2
     ```
     
 30. Найти только путь и название файла в строках которых есть комбинация букв “second” в текущей папке  
-    `grep -l "second" ./*`
+    `grep -l "second" ./*`  
+    Result:  
     ```
     grep: ./inner_dir_1: Is a directory
     ./tf_2.txt
     ```
 31. Найти все строки во всех файлах где нет комбинации “second”  
-    `grep -rv "second"`
+    `grep -rv "second"`  
+    Result:  
     ```
     inner_dir_1/tf_3.txt:1. any string
     inner_dir_1/tf_3.txt:2. another string
@@ -220,7 +246,8 @@
     tf_2.txt:the SeCoNd 2
     ```
 32. Найти только название и путь к файлам где нет комбинации “second”  
-    `grep -rvl "second"`
+    `grep -rvL "second"`  
+    Result:  
     ```
     inner_dir_1/tf_3.txt
     inner_dir_1/tf_4.txt
@@ -229,6 +256,7 @@
     ```
 33. Вывести в терминал 4 последних строк любого текстового файла  
     `tail -n4 tf_2.txt`  
+    Result:  
     ```
     the second 2
     the third 3
@@ -237,6 +265,7 @@
     ```
 34. Вывести в терминал 4 первые строки любого текстового файла.  
     `head -n4 tf_2.txt`  
+    Result:  
     ```
     the first 1
     the second 2
@@ -246,21 +275,42 @@
 
 35. Команда в одну строку. Создать папку и создать текстовый файл с содержиммым.  
     `mkdir inner_dir_2 | echo some content > tf_6.txt`  
+
 36. Команда в одну строку. Переместить в любую одну папку текстовые файлы у которых в содержимом есть слово “sec”  
     ```
-    mv `find ./* -maxdepth 0 -type f -exec grep -l "sec" '{}' ';'` inner_dir_2
+    grep -rl "sec" | xargs mv -vt inner_dir_2
+    or
+    mv -v `find ./* -type f -exec grep -l "sec" '{}' ';'` inner_dir_2
+    or
+    mv -v `find ./* -maxdepth 1 -type f -exec grep -l "sec" '{}' ';'` inner_dir_2
+    ```  
+    Result:
+    ```
+    renamed './inner_dir_1/tf_3.txt' -> 'inner_dir_2/tf_3.txt'
+    renamed './tf_2.txt' -> 'inner_dir_2/tf_2.txt'
     ```
 
 37. Команда в одну строку. Скопировать в любую одну папку текстовые файлы у которых в содержимом есть слово “sec”  
     ```
-    cp `find ./* -type f -exec grep -l "sec" '{}' ';'` inner_dir_2
+    grep -rl "sec" | xargs cp -vt inner_dir_1
+    or
+    cp -v `find ./* -type f -exec grep -l "sec" '{}' ';'` inner_dir_1
+    ```  
+    Result:
+    ```
+    'inner_dir_2/tf_2.txt' -> 'inner_dir_1/tf_2.txt'
+    'inner_dir_2/tf_3.txt' -> 'inner_dir_1/tf_3.txt'
     ```
 38. Команда в одну строку. Найти все строки c “sec” во всех текстовых файлах, скопировать и вставить эти строки в один новый созданный текстовый файл.  
     ```
+    grep -rh "sec" >> tf_7.txt
+    or
     echo `find ./* -type f -exec grep "sec" '{}' ';'` > tf_7.txt
     ```
 39. Команда в одну строку. Удалить текстовые файлы у которых в содержимом есть слово “sec”  
     ```
+    grep -rl "sec" | xargs rm -rf
+    or
     rm `find ./* -type f -exec grep -l "sec" '{}' ';'`
     ```
 40. Просто вывести в терминал строку “Good job!!”
