@@ -197,11 +197,11 @@
     ```
     
 30. Найти только путь и название файла в строках которых есть комбинация букв “second” в текущей папке  
-    `grep -l "second" ./*`  
+    `realpath $(grep -l "second" ./*)`  
     Result:  
     ```
     grep: ./inner_dir_1: Is a directory
-    ./tf_2.txt
+    /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1_check/tf_2.txt
     ```
 31. Найти все строки во всех файлах где нет комбинации “second”  
     `grep -rv "second"`  
@@ -246,13 +246,13 @@
     tf_2.txt:the SeCoNd 2
     ```
 32. Найти только название и путь к файлам где нет комбинации “second”  
-    `grep -rvL "second"`  
+    `realpath $(grep -rL "second")`  
     Result:  
     ```
-    inner_dir_1/tf_3.txt
-    inner_dir_1/tf_4.txt
-    inner_dir_1/tF_5.txt
-    tf_2.txt
+    /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1_check/inner_dir_1/tf_4.txt
+    /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1_check/inner_dir_1/tF_5.txt
+    /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1_check/tf_1.txt
+    /d/Documents/YandexDisk/QA/Linux/HW_2/dir_1_check/tf_6.txt
     ```
 33. Вывести в терминал 4 последних строк любого текстового файла  
     `tail -n4 tf_2.txt`  
